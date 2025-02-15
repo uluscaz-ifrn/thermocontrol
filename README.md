@@ -55,10 +55,10 @@ ThermoControl é um sistema de monitoramento de temperatura desenvolvido para o 
 ## Funcionamento
 - O display OLED exibe a temperatura e o limite configurado.
 - O joystick permite aumentar ou diminuir o limite de temperatura.
+- 🌐 Os dados são enviados para o ThingSpeak a cada 15 segundos
 - Se a temperatura ultrapassar o limite:
   - 🚨 O LED vermelho acende
   - 🔊 O buzzer emite um alerta sonoro
-  - 🌐 Os dados são enviados para o ThingSpeak
 
 ## Possíveis Melhorias
 - 📈 Utilizar um sensor externo para medições mais precisas
