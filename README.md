@@ -1,69 +1,82 @@
-# ThermoControl - Monitoramento de Temperatura
+# ThermoControl - Monitoramento Inteligente de Temperatura
 
-## Descrição
-ThermoControl é um sistema de monitoramento de temperatura desenvolvido como um projeto final para o Embarcatech. Ele utiliza a plataforma BitDogLab no qual tem no coração de seu hardware o Raspberry Pi Pico W. Ele mede a temperatura ambiente, exibe os dados em um display OLED SSD1306 e envia os valores periodicamente para o ThingSpeak. Além disso, permite ajustar o limite de temperatura via joystick analógico e aciona alertas visuais e sonoros quando a temperatura ultrapassa o limite estabelecido.
+## 📌 Visão Geral
+**ThermoControl** é um sistema de monitoramento de temperatura utilizando a placa **BitDogLab** baseada na **Raspberry Pi Pico**. O projeto permite a leitura da temperatura em tempo real, exibição dos dados em um **display OLED**, alertas via **LEDs e buzzer**, além do envio de informações para a plataforma **ThingSpeak** para monitoramento remoto.
 
-## Recursos
-- 📡 **Conexão Wi-Fi:** Envio de dados para o ThingSpeak
-- 📟 **Display OLED:** Exibição de temperatura e limite
-- 🎮 **Joystick Analógico:** Ajuste dinâmico do limite de temperatura
-- 🚨 **Alertas:** LEDs e buzzer acionados quando a temperatura ultrapassa o limite
-- 🌡️ **Monitoramento em tempo real**
+## 🛠 Tecnologias e Componentes Utilizados
 
-## Tecnologias Utilizadas
-- **Linguagem:** C
-- **Microcontrolador:** Raspberry Pi Pico W
-- **Sensores e periféricos:**
-  - Sensor de temperatura interno do Pico W
-  - Display OLED SSD1306 via I2C
-  - Buzzer para alertas sonoros
-  - LEDs para indicação de status
-  - Joystick analógico para ajuste do limite de temperatura
-  - Conexão Wi-Fi para envio de dados ao ThingSpeak
+### 🔌 Hardware
+- **BitDogLab (Raspberry Pi Pico)**
+- **Display OLED (SSD1306 - I2C)**
+- **LEDs RGB para indicação de status**
+- **Buzzer para alertas sonoros**
+- **Sensor de temperatura interno da Raspberry Pi Pico**
+- **Conectividade Wi-Fi (CYW43)**
 
-## Requisitos
-- Raspberry Pi Pico W
-- Display OLED SSD1306 (I2C)
-- Joystick analógico
-- LEDs e buzzer
-- Conexão Wi-Fi configurada
-- Conta no [ThingSpeak](https://thingspeak.com/) para recebimento dos dados
+### 💻 Software
+- **Linguagem C (SDK do Raspberry Pi Pico)**
+- **Plataforma ThingSpeak para armazenamento e análise de dados**
+- **Protocolo HTTP para comunicação com ThingSpeak**
 
-## Instalação e Configuração
-1. **Clone este repositório:**
-   ```bash
-   git clone https://github.com/seuusuario/ThermoControl.git
-   cd ThermoControl
-   ```
+## ⚙️ Funcionalidades
+- 🔥 *Leitura de temperatura* utilizando o sensor interno da Raspberry Pi Pico
+- 📟 *Exibição no display OLED* das informações de temperatura e status
+- 🚦 *Alertas visuais e sonoros* quando a temperatura ultrapassa o limite ajustado
+- 📡 *Envio de dados para ThingSpeak* via Wi-Fi
+- 🎛 *Ajuste do limite de temperatura* utilizando um joystick analógico
 
-2. **Configure o Wi-Fi e o ThingSpeak:**
-   Edite o arquivo `ThermoControl.c` e substitua:
-   ```c
-   #define WIFI_SSID "SEU_WIFI"
-   #define WIFI_PASS "SUA_SENHA"
-   #define THINGSPEAK_CHANNEL_API_KEY "SUA_API_KEY"
-   ```
+## 📜 Estrutura do Código
+O código-fonte principal está no arquivo `ThermoControl.c`, e segue a seguinte estrutura:
 
-3. **Compile e faça o upload para o Raspberry Pi Pico W:**
-   ```bash
-   mkdir build && cd build
-   cmake ..
-   make
-   ```
-   Em seguida, envie o binário gerado para o Raspberry Pi Pico.
+1. **Inicialização do sistema** (GPIOs, I2C, Wi-Fi, Display OLED)
+2. **Leitura da temperatura e exibição no display**
+3. **Verificação e acionamento de alertas** (LEDs/Buzzer)
+4. **Envio de dados para o ThingSpeak**
+5. **Ajuste dinâmico do limite de temperatura**
+6. **Loop principal para atualização periódica**
 
-## Funcionamento
-- O display OLED exibe a temperatura e o limite configurado.
-- O joystick permite aumentar ou diminuir o limite de temperatura.
-- 🌐 Os dados são enviados para o ThingSpeak a cada 15 segundos
-- Se a temperatura ultrapassar o limite:
-  - 🚨 O LED vermelho acende
-  - 🔊 O buzzer emite um alerta sonoro
+## 🚀 Como Configurar e Executar
 
-## Possíveis Melhorias
-- 📈 Utilizar um sensor externo para medições mais precisas
-- 📊 Criar um dashboard web para monitoramento remoto
-- 📡 Melhorar a comunicação com APIs externas
+### 1️⃣ Pré-requisitos
+- Placa **BitDogLab**
+- **Raspberry Pi Pico SDK** instalado no seu ambiente de desenvolvimento
+- Conexão com a Internet para envio de dados ao **ThingSpeak**
 
-## Licença
-Este projeto está sob a Licença MIT. Sinta-se à vontade para usar e modificar!
+### 2️⃣ Clonar o repositório
+```bash
+  git clone https://github.com/seu-usuario/ThermoControl.git
+  cd ThermoControl
+```
+
+### 3️⃣ Configurar Wi-Fi e API Key do ThingSpeak
+No arquivo `ThermoControl.c`, edite as seguintes linhas com suas credenciais:
+```c
+#define WIFI_SSID "SEU_WIFI"
+#define WIFI_PASS "SUA_SENHA"
+#define THINGSPEAK_CHANNEL_API_KEY "SUA_API_KEY"
+```
+
+### 4️⃣ Compilar e carregar o código na Raspberry Pi Pico
+```bash
+  mkdir build && cd build
+  cmake ..
+  make
+  picotool load -f ThermoControl.uf2
+```
+
+## 📊 Monitoramento no ThingSpeak
+1. Acesse [ThingSpeak](https://thingspeak.com/)
+2. Crie um canal e copie sua **API Key**
+3. Acompanhe os dados recebidos e visualize os gráficos gerados
+
+## 📌 Melhorias Futuras
+- 🔧 **Suporte para sensores de temperatura externos**
+- 📡 **Implementação do protocolo MQTT para comunicação mais robusta**
+- 📱 **Criação de um dashboard web para visualização remota dos dados**
+
+## 📄 Licença
+Este projeto é de código aberto e está sob a licença **MIT**.
+
+## 🙌 Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para abrir **issues** e enviar **pull requests**.
+
