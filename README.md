@@ -1,7 +1,7 @@
-# ThermoControl - Monitoramento de Temperatura com Raspberry Pi Pico W
+# ThermoControl - Monitoramento de Temperatura
 
 ## Descrição
-ThermoControl é um sistema de monitoramento de temperatura desenvolvido para o Raspberry Pi Pico W. Ele mede a temperatura ambiente, exibe os dados em um display OLED SSD1306 e envia os valores periodicamente para o ThingSpeak. Além disso, permite ajustar o limite de temperatura via joystick analógico e aciona alertas visuais e sonoros quando a temperatura ultrapassa o limite estabelecido.
+ThermoControl é um sistema de monitoramento de temperatura desenvolvido como um projeto final para o Embarcatech. Ele utiliza a plataforma BitDogLab no qual tem no coração de seu hardware o Raspberry Pi Pico W. Ele mede a temperatura ambiente, exibe os dados em um display OLED SSD1306 e envia os valores periodicamente para o ThingSpeak. Além disso, permite ajustar o limite de temperatura via joystick analógico e aciona alertas visuais e sonoros quando a temperatura ultrapassa o limite estabelecido.
 
 ## Recursos
 - 📡 **Conexão Wi-Fi:** Envio de dados para o ThingSpeak
